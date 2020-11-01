@@ -1,15 +1,14 @@
 import React from 'react';
 import SearchComponent from '../components/SearchComponent';
-import ResultsComponent from '../components/ResultsComponent';
+import DetailedTown from '../components/DetailedTown';
 
-
-function ResultsScreen() {
+function DetailedView() {
   return (
     <>
       <SearchComponent />
-      <ResultsComponent />
+      <DetailedTown />
     </>
   )
 }
 
-export default ResultsScreen;
+export default DetailedView;
