@@ -18,7 +18,7 @@ function StartView() {
       const citiesData = []
       snapshot.forEach(doc => citiesData.push(({ ...doc.data(), id: doc.id })))
       setCities(citiesData);
-      if(citiesData.length) {
+      if (citiesData.length) {
         setSelectedCity({ name: citiesData[0].name, id: citiesData[0].id })
       } else {
         setSelectedCity({});
@@ -32,8 +32,11 @@ function StartView() {
 
   return (
     <div className="main-container">
-    <MenuComponent />
-      <SearchComponent />
+      <div className="mainFuncs">
+        <MenuComponent />
+        <SearchComponent />
+      </div>
+
       <div className="citySwitch">
         {
           cities.map(city =>
@@ -51,8 +54,8 @@ function StartView() {
           selectedCity.name ?
             <SingleTown key={selectedCity.id} propsCity={selectedCity} /> :
             Object.keys(selectedCity).length ?
-            <div className="loader">Loading...</div> :
-            <p>Ne pratite niti jedan grad!</p>
+              <div className="loader">Loading...</div> :
+              <p>Ne pratite niti jedan grad!</p>
         }
       </>
     </div>
