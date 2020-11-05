@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../App.css';
 import MenuComponent from '../components/MenuComponent';
 import SearchComponent from '../components/SearchComponent';
-import { useEffect } from 'react';
-import { useState } from 'react';
 import firebase from '../firebase';
 import SingleTown from '../components/SingleTown';
 
