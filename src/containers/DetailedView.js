@@ -4,10 +4,10 @@ import DetailedTown from '../components/DetailedTown';
 
 function DetailedView() {
   return (
-    <>
+    <div className="main-container">
       <SearchComponent />
       <DetailedTown />
-    </>
+    </div>
   )
 }
 

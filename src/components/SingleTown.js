@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css';
 import firebase from '../firebase';
 
 function SingleTown({ propsCity }) {
@@ -48,7 +47,7 @@ function SingleTown({ propsCity }) {
             <div className="options">
               <button className="unfollowBtn" onClick={handleRemoveCity}>Otprati</button>
               <Link
-                to={'details/name=' + city.name}
+                to={'details=' + city.name}
                 className="details">Detalji
             </Link>
             </div>

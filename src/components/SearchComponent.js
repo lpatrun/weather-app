@@ -29,14 +29,14 @@ function SearchComponent() {
   }
 
   const toHandleSubmit = (event) => {
-    history.push("/results/" + query);
+    history.push("/search=" + query);
     event.preventDefault();
     setQuery('');
   }
 
   const toSelectTown = (city) => {
     setUnderlay(false);
-    history.push("/results/" + city);
+    history.push("/search=" + city);
     setQuery('');
   }
 
