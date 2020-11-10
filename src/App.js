@@ -28,7 +28,7 @@ function App() {
           <Route exact path="/" component={StartView} />
           <Route path="/search" component={SearchView} />
           <Route path="/search=:id" component={ResultsView} />
-          <Route path="/details=:name" component={DetailedView} />
+          <Route path="/details" component={DetailedView} />
           <Route path="/authorisation" component={AuthView} />
           <Route path="*" component={StartView} />
         </Switch>

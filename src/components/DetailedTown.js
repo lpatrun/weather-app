@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import '../App.css'
-import { useParams, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
-function DetailedTown() {
-  const { name } = useParams()
+function DetailedTown({ propsCity }) {
   const [city, setCity] = useState({})
 
   const api = {
@@ -13,13 +12,12 @@ function DetailedTown() {
   }
 
   useEffect(() => {
-    console.log(name)
-    fetch(`${api.base}q=${name}&appid=${api.key}${api.search}`)
+    fetch(`${api.base}q=${propsCity.name}&appid=${api.key}${api.search}`)
       .then((response) => response.json())
       .then((result) => {
         setCity(result)
       })
-  }, [api.base, api.key, api.search, name])
+  }, [api.base, api.key, api.search, propsCity])
 
   let history = useHistory()
 
@@ -36,7 +34,7 @@ function DetailedTown() {
         <div className="detailsBox" key={hour.dt}>
           <img
             src={`http://openweathermap.org/img/wn/${hour.weather[0].icon}@2x.png`}
-            alt={name}
+            alt={propsCity.name}
             title={hour.weather[0].description}
           />
           <div className="detailsBoxInfo">
@@ -55,36 +53,21 @@ function DetailedTown() {
   }
 
   return (
-    <>
+    <div className="weatherResults">
       {weatherReport ? (
-        <div className="weatherResults">
-          <div className="locationBox">{city.city.name}</div>
-          {/* <div className="weatherBox">
-              <img 
-              src={`http://openweathermap.org/img/wn/${city.list[0].weather[0].icon}@4x.png`} 
-              alt={city.city.name}
-              title={city.list[0].weather[0].description} 
-              />
-              <div className="weatherBoxInfo">
-                <div className="weather">{city.list[0].weather[0].description}</div>
-                <div className="temp">{Math.round(city.list[0].main.temp)} °C</div>
-                <div className="realFeel">
-                  Dojam: {Math.round(city.list[0].main.feels_like)} °C<br></br>
-                  Vjetar: {Math.round(city.list[0].wind.speed * 3.6)} km/h
-                </div>
-              </div>
-            </div> */}
+        <>
+          {/* <div className="locationBox">{city.city.name}</div> */}
           {weatherReport}
           <div className="options">
             <button className="returnBtn" onClick={returnHome}>
               Natrag
             </button>
           </div>
-        </div>
+        </>
       ) : (
         <div className="loader">Loading...</div>
       )}
-    </>
+    </div>
   )
 }
 
