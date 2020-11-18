@@ -11,7 +11,7 @@ function ResultsComponent() {
   }
 
   const [weather, setWeather] = useState({})
-  const cities = useContext(UserContext)
+  const {store, setStore} = useContext(UserContext)
   let { id } = useParams()
 
   useEffect(() => {
@@ -38,7 +38,7 @@ function ResultsComponent() {
 
   const followButton = () => {
     let contains = false
-    cities.forEach((element) => {
+    store.cities.forEach((element) => {
       if (element.name === id.trim()) {
         contains = true
       }
