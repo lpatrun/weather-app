@@ -1,25 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import DetailedTown from '../components/DetailedTown'
 import MenuComponent from '../components/MenuComponent'
 import { UserContext } from '../UserContext'
 
 function DetailedView() {
-  const cities = useContext(UserContext)
-  const [selectedCity, setSelectedCity] = useState({})
-
-  useEffect(() => {
-    let mounted = true
-    if (cities.length && mounted) {
-      setSelectedCity({ name: cities[0].name, id: cities[0].id })
-    }
-
-    return () => {
-      mounted = false
-    }
-  }, [cities])
-
-  const cityToDisplay = (naem, id) => {
-    setSelectedCity({ name: naem, id: id })
+  const {store, setStore} = useContext(UserContext)
+  
+  const setSelCity = (name, id) => {
+    setStore({
+      ...store,
+      selectedCity: { name: name, id: id }
+    })
   }
 
   return (
@@ -27,13 +18,13 @@ function DetailedView() {
       <div className="mainFuncs">
         <MenuComponent />
         <div className="citySwitch">
-          {selectedCity ? (
-            cities.map((city) => (
+          {store ? (
+            store.cities.map((city) => (
               <div
                 key={city.id}
-                onClick={() => cityToDisplay(city.name, city.id)}
+                onClick={() => setSelCity(city.name, city.id)}
                 className={
-                  city.name === selectedCity.name
+                  city.name === store.selectedCity.name
                     ? 'citySwitchTownActive'
                     : 'citySwitchTown'
                 }
@@ -48,9 +39,9 @@ function DetailedView() {
       </div>
 
       <>
-        {selectedCity.name && cities ? (
-          <DetailedTown key={selectedCity.id} propsCity={selectedCity} />
-        ) : Object.keys(selectedCity).length ? (
+        { store ? (
+          <DetailedTown key={store.selectedCity.id} propsCity={store.selectedCity} />
+        ) : Object.keys(store.selectedCity).length ? (
           <div className="loader">Loading...</div>
         ) : (
           <p>Ne pratite niti jedan grad!</p>

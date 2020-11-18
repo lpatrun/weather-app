@@ -1,0 +1,77 @@
+.searchContainer {
+  position: relative;
+}
+
+.underly {
+  position: absolute;
+  z-index: 5;
+  height: 100vh;
+  width: 100vw;
+  left: -40%;
+  top: -30%;
+}
+
+.searchBox {
+  width: 80%;
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+}
+
+.mainBtn {
+  margin-right: 10px;
+  padding: 6px 15px;
+  font-size: 20px;
+  border: none;
+  border-radius: 2px;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  color: white;
+}
+
+.mainBtn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.autosuggestion {
+  width: 100%;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.9);
+  max-height: 100px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.6);
+
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+}
+
+.autosuggestionItem {
+  padding: 5px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+@media (max-width: 420px) {
+  .underly {
+    left: -34%;
+    top: -27%;
+  }
+
+  .searchBox {
+    width: 100%;
+  }
+
+  .autosuggestion {
+    width: 100%;
+  }
+}

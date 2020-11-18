@@ -1,0 +1,105 @@
+.weatherResults {
+  width: 35%;
+  margin: 0px auto;
+  margin-top: 100px;
+  position: relative;
+  /* background-color: rgba(255, 255, 255, 0.6); */
+}
+
+.locationBox {
+  margin: 10px auto 20px auto;
+  font-size: 30px;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.weatherBox {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  column-gap: 10px;
+  margin-bottom: 25px;
+}
+
+.weatherBox img {
+  display: flex;
+  justify-self: center;
+  align-self: center;
+}
+
+.weatherBoxInfo {
+  text-align: end;
+}
+
+.weatherBoxInfo .weather {
+  color: #fff;
+  font-size: 40px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.weatherBoxInfo .temp {
+  color: #fff;
+  font-size: 100px;
+  font-weight: 900;
+}
+
+.weatherBoxInfo .realFeel {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: -15px;
+  margin-bottom: 10px;
+}
+
+.returnBtn {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: white;
+  width: 40%;
+  margin: 0 30%;
+  padding: 10px;
+  outline: none;
+  border: none;
+  text-transform: uppercase;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+@media (max-width: 420px) {
+  .weatherResults {
+    margin-top: 80px;
+    width: 100%;
+    padding: 0px 20px;
+  }
+
+  .locationBox {
+    margin: 20px auto;
+    font-size: 28px;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .weatherBox {
+    grid-template-columns: none;
+  }
+
+  .weatherBoxInfo .temp {
+    font-size: 40px;
+    font-weight: 700;
+  }
+
+  .weatherBoxInfo .realFeel {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .weatherBoxInfo .weather {
+    font-size: 26px;
+    font-weight: 500;
+  }
+}

@@ -2,24 +2,16 @@ import React, { useContext, useEffect, useState } from 'react'
 import MenuComponent from '../components/MenuComponent'
 import SingleTown from '../components/SingleTown'
 import { UserContext } from '../UserContext'
+import './StartView.css'
 
 function StartView() {
-  const cities = useContext(UserContext)
-  const [selectedCity, setSelectedCity] = useState({})
+  const {store, setStore} = useContext(UserContext)
 
-  useEffect(() => {
-    let mounted = true;
-    if (cities.length && mounted) {
-      setSelectedCity({ name: cities[0].name, id: cities[0].id })
-    }
-
-    return () => {
-      mounted = false;
-    }
-  }, [cities])
-
-  const cityToDisplay = (naem, id) => {
-    setSelectedCity({ name: naem, id: id })
+  const setSelCity = (name, id) => {
+    setStore({
+      ...store,
+      selectedCity: { name: name, id: id }
+    })
   }
 
   return (
@@ -27,13 +19,13 @@ function StartView() {
       <div className="mainFuncs">
         <MenuComponent />
         <div className="citySwitch">
-          {selectedCity ? (
-            cities.map((city) => (
+          {store ? (
+            store.cities.map((city) => (
               <div
                 key={city.id}
-                onClick={() => cityToDisplay(city.name, city.id)}
+                onClick={() => setSelCity(city.name, city.id)}
                 className={
-                  city.name === selectedCity.name
+                  city.name === store.selectedCity.name
                     ? 'citySwitchTownActive'
                     : 'citySwitchTown'
                 }
@@ -48,9 +40,9 @@ function StartView() {
       </div>
 
       <>
-        { (selectedCity.name && cities) ? (
-          <SingleTown key={selectedCity.id} propsCity={selectedCity} />
-        ) : Object.keys(selectedCity).length ? (
+        { store ? (
+          <SingleTown key={store.selectedCity.id} propsCity={store.selectedCity} />
+        ) : Object.keys(store.selectedCity).length ? (
           <div className="loader">Loading...</div>
         ) : (
           <p>Ne pratite niti jedan grad!</p>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import '../App.css'
+import './DetailedTown.css'
 import { useHistory } from 'react-router-dom'
 
 function DetailedTown({ propsCity }) {
@@ -8,7 +8,7 @@ function DetailedTown({ propsCity }) {
   const api = {
     base: 'https://api.openweathermap.org/data/2.5/forecast?',
     search: '&lang=hr&units=metric',
-    key: '26f7c14de162ddf380af26c56863bd3a',
+    key: process.env.REACT_APP_OPENWEATHER_API_KEY
   }
 
   useEffect(() => {

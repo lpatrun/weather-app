@@ -10,24 +10,32 @@ import { UserContext } from './UserContext'
 import SearchView from './containers/SearchView'
 
 function App() {
-  const [cities, setCities] = useState([])
+  const [store, setStore] = useState({
+    cities: [],
+    selectedCity: {},
+    authorised: false,
+  })
 
   useEffect(() => {
     const db = firebase.firestore()
     return db.collection('cities').onSnapshot((snapshot) => {
       const citiesData = []
       snapshot.forEach((doc) => citiesData.push({ ...doc.data(), id: doc.id }))
-      setCities(citiesData)
+      setStore({
+        ...store,
+        cities: citiesData,
+        selectedCity: { name: citiesData[0].name, id: citiesData[0].id },
+      })
     })
   }, [])
 
   return (
     <Router basename={process.env.PUBLIC_URL}>
-      <UserContext.Provider value={cities}>
+      <UserContext.Provider value={{store, setStore}}>
         <Switch>
-          <Route exact path="/" component={StartView} />
-          <Route path="/search" component={SearchView} />
-          <Route path="/search=:id" component={ResultsView} />
+          <Route path="/" exact component={StartView} />
+          <Route path="/search" exact component={SearchView} />
+          <Route path="/search/:id" component={ResultsView} />
           <Route path="/details" component={DetailedView} />
           <Route path="/authorisation" component={AuthView} />
           <Route path="*" component={StartView} />

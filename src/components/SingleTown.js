@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import firebase from '../firebase'
+import './ResultsComponent.css'
 
 function SingleTown({ propsCity }) {
   const api = {
     base: 'https://api.openweathermap.org/data/2.5/',
-    key: '26f7c14de162ddf380af26c56863bd3a',
+    key: process.env.REACT_APP_OPENWEATHER_API_KEY,
   }
 
   const [city, setCity] = useState({})
 
   useEffect(() => {
-    fetch(
-      `${api.base}weather?q=${propsCity.name}&units=metric&lang=hr&appid=${api.key}`,
-    )
-      .then((response) => response.json())
-      .then((result) => {
-        result = { ...result, realId: propsCity.id }
-        setCity(result)
-      })
+    if (propsCity.name) {
+      fetch(
+        `${api.base}weather?q=${propsCity.name}&units=metric&lang=hr&appid=${api.key}`,
+      )
+        .then((response) => response.json())
+        .then((result) => {
+          result = { ...result, realId: propsCity.id }
+          setCity(result)
+        })
+    }
   }, [api.base, propsCity, api.key])
 
   const handleRemoveCity = () => {
@@ -28,7 +31,7 @@ function SingleTown({ propsCity }) {
 
   return (
     <div className="weatherResults">
-      { city.main ? (
+      {city.main ? (
         <>
           {/* <div className="locationBox">
               {city.name}, {city.sys.country}

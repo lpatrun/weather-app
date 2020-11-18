@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
-import '../App.css';
+import './SearchComponent.css';
 import cities from '../data/city.list.json';
 
 function SearchComponent() {
@@ -29,14 +29,14 @@ function SearchComponent() {
   }
 
   const toHandleSubmit = (event) => {
-    history.push("/search=" + query);
+    history.push("/search/" + query);
     event.preventDefault();
     setQuery('');
   }
 
   const toSelectTown = (city) => {
     setUnderlay(false);
-    history.push("/search=" + city);
+    history.push("/search/" + city);
     setQuery('');
   }
 

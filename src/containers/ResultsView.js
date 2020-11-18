@@ -1,8 +1,7 @@
-import React from 'react';
-import SearchComponent from '../components/SearchComponent';
-import ResultsComponent from '../components/ResultsComponent';
-import MenuComponent from '../components/MenuComponent';
-
+import React from 'react'
+import SearchComponent from '../components/SearchComponent'
+import ResultsComponent from '../components/ResultsComponent'
+import MenuComponent from '../components/MenuComponent'
 
 function ResultsView() {
   return (
@@ -16,4 +15,4 @@ function ResultsView() {
   )
 }
 
-export default ResultsView;
+export default ResultsView

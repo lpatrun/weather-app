@@ -1,0 +1,26 @@
+.mainFuncs {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  column-gap: 25px;
+  align-items: center;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 10000000;
+  padding: 15px;
+  /* background-image: linear-gradient(to right bottom, rgb(37, 42, 62), rgb(47, 54, 85));*/
+  background-image: linear-gradient(
+    to right,
+    rgb(37, 42, 62),
+    rgb(41, 71, 115)
+  );
+}
+
+@media (max-width: 420px) {
+  .mainFuncs {
+    display: flex;
+    row-gap: 25px;
+  }
+}
