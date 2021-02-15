@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useParams, useHistory } from 'react-router-dom'
 import './ResultsComponent.css'
-import firebase from '../firebase'
-import { UserContext } from '../UserContext'
+
+import { useParams, useHistory, Link } from 'react-router-dom'
+
+import { UserContext } from '../App'
 
 function ResultsComponent() {
   const api = {
@@ -11,7 +12,7 @@ function ResultsComponent() {
   }
 
   const [weather, setWeather] = useState({})
-  const {store, setStore} = useContext(UserContext)
+  const {state, dispatch} = useContext(UserContext)
   let { id } = useParams()
 
   useEffect(() => {
@@ -26,19 +27,15 @@ function ResultsComponent() {
 
   const saveCityToFirestore = (e) => {
     e.preventDefault()
-    const db = firebase.firestore()
-    db.collection('cities').add({ name: id })
+    dispatch({ type: 'saveCity', payload: {cityName: id}})
     history.push('/')
   }
 
   let history = useHistory()
-  const returnHome = () => {
-    history.push('/')
-  }
 
   const followButton = () => {
     let contains = false
-    store.cities.forEach((element) => {
+    state.cities.forEach((element) => {
       if (element.name === id.trim()) {
         contains = true
       }
@@ -63,7 +60,9 @@ function ResultsComponent() {
             <div className="weatherBox">
               <img
                 src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`}
-                alt=""
+                alt="slika"
+                width="200px"
+                height="200px"
               />
               <div className="weatherBoxInfo">
                 <div className="weather">{weather.weather[0].description}</div>
@@ -78,11 +77,11 @@ function ResultsComponent() {
                 </div>
               </div>
             </div>
-            {followButton()}
+            { state.userData && followButton()}
           </div>
-          <button className="returnBtn" onClick={returnHome}>
+          <Link to="/" className="returnBtn">
             Natrag
-          </button>
+          </Link>
         </>
       )}
     </>

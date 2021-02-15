@@ -23,12 +23,29 @@
   position: relative;
 }
 
+.searchBar {
+  width: 80%;
+  padding: 10px 15px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  color: #313131;
+  font-size: 20px;
+  color: white;
+}
+
+.searchBar::placeholder {
+  color: white;
+  opacity: 0.8;
+}
+
 .mainBtn {
   margin-right: 10px;
   padding: 6px 15px;
   font-size: 20px;
   border: none;
-  border-radius: 2px;
   outline: none;
   background-color: rgba(255, 255, 255, 0.4);
   cursor: pointer;

@@ -1,41 +1,41 @@
-import React, { useEffect, useState } from 'react'
-import './DetailedTown.css'
-import { useHistory } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import "./DetailedTown.css";
+
+import { Link } from "react-router-dom";
 
 function DetailedTown({ propsCity }) {
-  const [city, setCity] = useState({})
+  const [city, setCity] = useState({});
+  const dani = ['Nedjelja', 'Ponedjeljak', 'Utorak', 'Srijeda', 'Četvrtak', 'Petak', 'Subota'];
 
   const api = {
-    base: 'https://api.openweathermap.org/data/2.5/forecast?',
-    search: '&lang=hr&units=metric',
-    key: process.env.REACT_APP_OPENWEATHER_API_KEY
-  }
+    base: "https://api.openweathermap.org/data/2.5/forecast?",
+    search: "&lang=hr&units=metric",
+    key: process.env.REACT_APP_OPENWEATHER_API_KEY,
+  };
 
   useEffect(() => {
-    fetch(`${api.base}q=${propsCity.name}&appid=${api.key}${api.search}`)
-      .then((response) => response.json())
-      .then((result) => {
-        setCity(result)
-      })
-  }, [api.base, api.key, api.search, propsCity])
+    if (propsCity.name) {
+      fetch(`${api.base}q=${propsCity.name}&appid=${api.key}${api.search}`)
+        .then((response) => response.json())
+        .then((result) => {
+          setCity(result);
+        });
+    }
+  }, [api.base, api.key, api.search, propsCity]);
 
-  let history = useHistory()
-
-  const returnHome = () => {
-    history.push('/')
-  }
-
-  let weatherReport = null
+  let weatherReport = null;
 
   if (city.list) {
     weatherReport = city.list.map((hour) => {
-      const date = new Date(hour.dt * 1000)
+      const date = new Date(hour.dt * 1000);
       return (
         <div className="detailsBox" key={hour.dt}>
           <img
             src={`http://openweathermap.org/img/wn/${hour.weather[0].icon}@2x.png`}
             alt={propsCity.name}
             title={hour.weather[0].description}
+            height="100px"
+            width="100px"
           />
           <div className="detailsBoxInfo">
             <div className="detailsWeather">{hour.weather[0].description}</div>
@@ -44,12 +44,13 @@ function DetailedTown({ propsCity }) {
               Dojam: {Math.round(hour.main.feels_like)} °C<br></br>
               Vjetar: {Math.round(hour.wind.speed * 3.6)} km/h<br></br>
               {date.getHours()}:00, {date.getDate()}.{date.getMonth() + 1}.
-              {date.getFullYear()}.
+              {date.getFullYear()}.<br></br>
+              {dani[date.getDay()]}
             </div>
           </div>
         </div>
-      )
-    })
+      );
+    });
   }
 
   return (
@@ -59,16 +60,16 @@ function DetailedTown({ propsCity }) {
           {/* <div className="locationBox">{city.city.name}</div> */}
           {weatherReport}
           <div className="options">
-            <button className="returnBtn" onClick={returnHome}>
+            <Link to="/" className="returnBtn">
               Natrag
-            </button>
+            </Link>
           </div>
         </>
       ) : (
         <div className="loader">Loading...</div>
       )}
     </div>
-  )
+  );
 }
 
-export default DetailedTown
+export default DetailedTown;

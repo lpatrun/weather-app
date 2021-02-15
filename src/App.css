@@ -40,8 +40,10 @@
 }
 
 .followCity {
+  box-sizing: border-box;
   width: 100%;
-  margin-top: 25px;
+  margin: 25px 0;
+  cursor: pointer;
   padding: 10px;
   outline: none;
   border: none;
@@ -50,23 +52,12 @@
   color: white;
 }
 
-.searchBar {
-  width: 80%;
-  padding: 15px;
-  -webkit-appearance: none;
-  appearance: none;
-  background: none;
-  border: none;
-  outline: none;
-  color: #313131;
-  font-size: 20px;
-  color: white;
+.followCity:hover {
+  background-color: #fff;
+  color: #222;
 }
 
-.searchBar::placeholder {
-  color: white;
-  opacity: 0.8;
-}
+
 
 .unfollowBtn {
   padding: 10px 20px;
@@ -76,6 +67,11 @@
   font-size: 22px;
   color: #fff;
   cursor: pointer;
+}
+
+.unfollowBtn:hover {
+color:rgb(41, 71, 115);
+background-color: #fff;
 }
 
 a,
@@ -127,11 +123,6 @@ a:focus {
   }
 }
 
-.active {
-  color: #fff !important;
-  text-decoration: underline;
-}
-
 .details {
   padding: 10px 20px;
   outline: none;
@@ -140,6 +131,10 @@ a:focus {
   font-size: 22px;
   color: #000;
   cursor: pointer;
+}
+
+.details:hover {
+  background-color: #ccc;
 }
 
 ::-webkit-scrollbar {
@@ -164,6 +159,11 @@ a:focus {
 }
 
 @media (max-width: 420px) {
+  ::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+
   .main-container {
     padding: 0px;
   }
@@ -176,7 +176,7 @@ a:focus {
   }
 
   .active {
-    color: #000 !important;
+    color: #000;
     text-decoration: none;
     background-color: #fff;
   }

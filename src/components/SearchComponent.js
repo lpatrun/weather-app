@@ -1,51 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import "./SearchComponent.css";
 import { useHistory } from "react-router-dom";
-import './SearchComponent.css';
-import cities from '../data/city.list.json';
+import cities from "../data/gradovi.json";
 
 function SearchComponent() {
-
   let history = useHistory();
-
-  const [hrGradovi] = useState(cities.filter(city => city.country === "HR"));
+  const [hrGradovi] = useState(cities);
   const [gradoviZaSelect, setGradoviZaSelect] = useState([]);
-  const [query, setQuery] = useState('');
-  const [underlay, setUnderlay] = useState(false)
+  const [query, setQuery] = useState("");
+  const [underlay, setUnderlay] = useState(false);
 
   const handleChange = (e) => {
     setQuery(e.target.value.toLowerCase());
     if (e.target.value) {
       setGradoviZaSelect(
-        hrGradovi.filter(
-          grad => grad.name.toLowerCase().startsWith(e.target.value)
-        )
+        hrGradovi
+          .filter((grad) => grad.name.toLowerCase().startsWith(e.target.value))
           .sort((a, b) => a.name.localeCompare(b.name))
-      )
-      setUnderlay(true)
+      );
+      setUnderlay(true);
     } else {
       setGradoviZaSelect([]);
-      setUnderlay(false)
+      setUnderlay(false);
     }
-  }
+  };
 
   const toHandleSubmit = (event) => {
     history.push("/search/" + query);
     event.preventDefault();
-    setQuery('');
-  }
+    setQuery("");
+  };
 
   const toSelectTown = (city) => {
     setUnderlay(false);
     history.push("/search/" + city);
-    setQuery('');
-  }
+    setQuery("");
+  };
 
   return (
     <div className="searchContainer">
-      {
-        underlay &&
-        <div className="underly" onClick={() => { setUnderlay(false); }}></div>
-      }
+      {underlay && (
+        <div
+          className="underly"
+          onClick={() => {
+            setUnderlay(false);
+          }}
+        ></div>
+      )}
       <form onSubmit={toHandleSubmit} className="searchBox">
         <input
           type="text"
@@ -56,22 +57,24 @@ function SearchComponent() {
           required
         />
 
-        <button type="submit" className="mainBtn">Traži</button>
+        <button type="submit" className="mainBtn">
+          Traži
+        </button>
 
-        {underlay &&
+        {underlay && (
           <div className="autosuggestion">
-            {gradoviZaSelect.map(grad =>
+            {gradoviZaSelect.map((grad) => (
               <div
                 className="autosuggestionItem"
                 key={grad.id}
-                onClick={() => toSelectTown(grad.name)}>
+                onClick={() => toSelectTown(grad.name)}
+              >
                 {grad.name}
-              </div>)
-            }
+              </div>
+            ))}
           </div>
-        }
+        )}
       </form>
-
     </div>
   );
 }

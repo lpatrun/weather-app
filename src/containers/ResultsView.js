@@ -1,4 +1,5 @@
 import React from 'react'
+
 import SearchComponent from '../components/SearchComponent'
 import ResultsComponent from '../components/ResultsComponent'
 import MenuComponent from '../components/MenuComponent'
