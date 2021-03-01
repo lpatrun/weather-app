@@ -1,0 +1,35 @@
+.btn {
+  padding: 10px 20px;
+  outline: $white;
+  font-size: 22px;
+  cursor: pointer;
+  text-transform: uppercase;
+  
+  &-primary {
+    border: 1px solid $white;
+    background-color: transparent;
+    color: $white;
+    
+    &:hover {
+      color: $deepblue;
+      background-color: $white;
+    }
+  }
+  
+  &-secondary {
+    border: 1px solid $white;
+    background-color: $white;
+    color: $deepblue;
+    
+    &:hover {
+      border: 1px solid $white;
+      background-color: transparent;
+      color: $white;
+    }
+  }
+
+  &-small {
+    padding: 5px 10px;
+    font-size: 18px;
+  }
+}

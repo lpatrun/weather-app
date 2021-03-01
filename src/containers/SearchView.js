@@ -7,7 +7,7 @@ function SearchView() {
 
   return (
     <div className="main-container">
-      <div className="mainFuncs">
+      <div className="main-funcs">
         <MenuComponent />
         <SearchComponent />
       </div>

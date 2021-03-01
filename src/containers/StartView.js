@@ -1,39 +1,44 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import MenuComponent from "../components/MenuComponent";
 import SingleTown from "../components/SingleTown";
 import SwitchComponent from "../components/SwitchComponent";
 import { UserContext } from "../App";
-import { useHistory } from "react-router-dom";
-import "./StartView.css";
+import { NavLink } from "react-router-dom";
+import "./StartView.scss";
 
 function StartView() {
   const { state } = useContext(UserContext);
-  let history = useHistory();
-
-  useEffect(() => {
-    !state.userData && history.push("/search");
-    // eslint-disable-next-line
-  }, []);
 
   return (
     <div className="main-container">
-      <div className="mainFuncs">
+      <div className="main-funcs">
         <MenuComponent />
         <SwitchComponent />
       </div>
-
       <>
-        {state.selectedCity ? (
-          <SingleTown
-            key={state.selectedCity.id}
-            propsCity={state.selectedCity}
-          />
-        ) : Object.keys(state.selectedCity).length ? (
+        { state.selectedCity > -1 ? (
+          <SingleTown key={state.cities[state.selectedCity]} />
+        ) : state.selectedCity > -1 ? (
           <div className="loader">Loading...</div>
         ) : (
-          <p style={{ color: "white", margin: "0 auto" }}>
-            Ne pratite niti jedan grad!
-          </p>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              paddingTop: "100px"
+            }}
+          >
+            <p style={{ color: "white", textAlign: "center" }}>
+              Trenutno ne pratite niti jedan grad :/
+            </p>
+            <p style={{ color: "white", textAlign: "center" }}>
+              Prvo na tražilicu
+            </p>
+            <NavLink to="/search">
+              <button style={{ margin: "10px auto" }}>NA TRAŽILICU</button>
+            </NavLink>
+          </div>
         )}
       </>
     </div>

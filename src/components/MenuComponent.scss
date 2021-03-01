@@ -1,4 +1,4 @@
-.menuContainer {
+.menu-container {
   width: 100%;
 }
 
@@ -6,7 +6,7 @@
   display: none;
 }
 
-.mobile .menu__item svg {
+.mobile .menu-item svg {
   width: 22px;
   height: 22px;
   margin-right: 10px;
@@ -21,27 +21,27 @@
   flex-flow: row wrap;
 }
 
-.desktop .menu__item {
+.desktop .menu-item {
   color: #222;
   fill: #222;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 10px 15px;
 }
 
-.desktop .menu__item svg {
+.desktop .menu-item svg {
   width: 12px;
   height: 12px;
   margin-right: 10px;
 }
 
-.menu__item:hover {
+.menu-item:hover {
   text-decoration: underline;
   background-color: rgba(255, 255, 255, 0.1);
   color:#fff;
   fill: #fff;
 }
 
-.menu__item img {
+.menu-item img {
   width: 20px;
   height: 20px;
   margin-right: 10px;
@@ -60,19 +60,19 @@
     display: none;
   }
 
-  .menuContainer {
+  .menu-container {
     display: block;
     height: 50px;
     width: 78px;
     background-color: transparent;
   }
 
-  .menu__item {
+  .menu-item {
     font-size: 20px;
     color: #222;
   }
 
-  .menu__icon {
+  .menu-icon {
     height: 24px;
     width: 40px;
     margin: 3%;
@@ -84,7 +84,7 @@
     z-index: 20;
   }
 
-  .menu__icon span {
+  .menu-icon span {
     display: block;
     background: rgba(255, 255, 255, 0.9);
     width: 100%;
@@ -96,8 +96,8 @@
     top: 50%;
   }
 
-  .menu__icon:before,
-  .menu__icon:after {
+  .menu-icon:before,
+  .menu-icon:after {
     content: '';
     display: block;
     background: rgba(255, 255, 255, 0.9);
@@ -110,33 +110,33 @@
     transition: all 0.3s ease;
   }
 
-  .menu__icon:before {
+  .menu-icon:before {
     top: 2px;
     margin-top: -2px;
   }
 
-  .menu__icon:after {
+  .menu-icon:after {
     bottom: 2px;
     margin-bottom: -1px;
   }
 
-  .menu_shown .menu__icon span {
+  .menu-shown .menu-icon span {
     background: transparent;
   }
 
-  .menu_shown .menu__icon:before {
+  .menu-shown .menu-icon:before {
     top: 50%;
     transform: rotate(45deg);
     background-color: black;
   }
 
-  .menu_shown .menu__icon:after {
+  .menu-shown .menu-icon:after {
     bottom: 50%;
     transform: rotate(-45deg);
     background-color: black;
   }
 
-  .menu_shown .mobile.menu {
+  .menu-shown .mobile.menu {
     transform: translateX(0);
   }
 
@@ -155,7 +155,7 @@
     transform: translateX(-100%);
   }
 
-  .mobile .menu__item {
+  .mobile .menu-item {
     display: block;
     line-height: 2;
     padding: 25px 0;
@@ -167,7 +167,7 @@
     justify-content: center;
   }
 
-  .mobile .menu__item img {
+  .mobile .menu-item img {
     margin-right: 10px;
   }
 

@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
-import "./AuthView.css";
+import { useForm } from "react-hook-form";
+import "./AuthView.scss";
 import { auth } from "../firebase";
 import MenuComponent from "../components/MenuComponent";
 import { Redirect } from "react-router-dom";
@@ -9,31 +10,32 @@ function AuthView() {
   const { state, dispatch } = useContext(UserContext);
 
   const [proces, setProces] = useState("signin");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { register, handleSubmit, errors } = useForm();
 
-  const handleSignIn = (e) => {
-    e.preventDefault();
-    auth.signInWithEmailAndPassword(email, password).then((response) => {
-      dispatch({ type: "userLogin", payload: { response } });
-    });
+  const handleSignIn = (data) => {
+    auth
+      .signInWithEmailAndPassword(data.signinEmail, data.signinPassword)
+      .then((response) => {
+        dispatch({ type: "userLogin", payload: { response } });
+      });
   };
 
-  const handleSignUp = (e) => {
-    e.preventDefault();
-    auth.createUserWithEmailAndPassword(email, password).then((response) => {
-      dispatch({ type: "userSignup", payload: { response } });
-    });
+  const handleSignUp = (data) => {
+    auth
+      .createUserWithEmailAndPassword(data.signupEmail, data.signupPassword)
+      .then((response) => {
+        dispatch({ type: "userSignup", payload: { response } });
+      });
   };
 
   return (
     <div className="main-container">
       {state.userData && <Redirect to="/" />}
-      <div className="mainFuncs">
+      <div className="main-funcs">
         <MenuComponent />
       </div>
 
-      <div className="formContainer">
+      <div className="form-container">
         <svg
           id="Capa_1"
           viewBox="0 0 512 512"
@@ -46,15 +48,15 @@ function AuthView() {
           <path d="m398.906 267.268c-17.171-42.432-58.823-70.488-104.645-70.29-18.777-41.809-60.796-71.005-109.519-71.005-66.168 0-119.999 53.832-119.999 120 0 42.451 22.168 79.809 55.525 101.147-35.567 56.188 4.873 129.853 71.41 129.853 236.012-.246 223.098.604 227.208-.672 52.427-5.913 93.114-50.379 93.114-104.327 0-61.607-52.642-109.441-113.094-104.706zm-304.163-21.294c0-49.626 40.374-90 90-90 33.465 0 62.705 18.37 78.211 45.547-47.399 13.889-80.31 57.162-80.838 106.81-14.9 1.635-28.949 7.202-41.049 16.301-27.605-15.389-46.324-44.874-46.324-78.658zm318.469 200.742c-5.343.434-141.464.182-221.534.258-49.461 0-73.564-61.31-36.763-94.916 11.046-10.087 25.755-15.454 41.783-13.996 9.669.872 17.548-7.493 16.213-17.02-6.954-49.631 31.479-94.068 81.689-94.068 37.144 0 69.882 25.002 79.612 60.801 2.08 7.649 9.753 12.356 17.512 10.755 46.753-9.669 90.276 26.071 90.276 73.444 0 38.756-30.215 71.587-68.788 74.742z" />
         </svg>
 
-        <div className="formMenu">
+        <div className="form-menu">
           <button
-            className={proces === "signin" ? "formMenuActive" : ""}
+            className={proces === "signin" ? "form-menu-active" : ""}
             onClick={() => setProces("signin")}
           >
             prijavi se
           </button>
           <button
-            className={proces === "signup" ? "formMenuActive" : ""}
+            className={proces === "signup" ? "form-menu-active" : ""}
             onClick={() => setProces("signup")}
           >
             registriraj se
@@ -62,49 +64,66 @@ function AuthView() {
         </div>
 
         {proces === "signin" ? (
-          <form onSubmit={handleSignIn}>
-            <div className="inputsContainer">
+          <form onSubmit={handleSubmit(handleSignIn)}>
+            <div className="inputs-container">
               <input
                 type="email"
-                name="email"
-                id="email"
+                name="signinEmail"
                 placeholder="Vaš email..."
-                onChange={(e) => setEmail(e.target.value)}
+                ref={register({
+                  required: "Molimo unesite mail formata ivan.ivic@mail.com.",
+                })}
               />
+              {errors.signinEmail && <span>{errors.signinEmail.message}</span>}
               <input
                 type="password"
-                name="password"
-                id="password"
+                name="signinPassword"
                 placeholder="Vaša lozinka..."
-                onChange={(e) => setPassword(e.target.value)}
+                ref={register({
+                  required: "Lozinka je obavezna.",
+                  minLength: {
+                    value: 6,
+                    message: "Lozinka mora imati najmanje 6 znakova.",
+                  },
+                })}
               />
+              {errors.signinPassword && <span>{errors.signinPassword.message}</span>}
             </div>
-            <button type="submit" className="submitButton">
-              Prijavi se
-            </button>
+            <input type="submit" className="btn btn-secondary center" value="Prijavi se" />
           </form>
         ) : (
-          <form onSubmit={handleSignUp}>
-            <div className="inputsContainer">
+          <form onSubmit={handleSubmit(handleSignUp)}>
+            <div className="inputs-container">
               <input
                 type="email"
-                name="email"
-                id="email"
+                name="signupEmail"
                 placeholder="Vaš email..."
-                onChange={(e) => setEmail(e.target.value)}
+                ref={register({
+                  required: "Molimo unesite mail formata ivan.ivic@mail.com.",
+                })}
               />
+              {errors.signupEmail && <span>{errors.signupEmail.message}</span>}
 
               <input
                 type="password"
-                name="password"
-                id="password"
+                name="signupPassword"
+                required
                 placeholder="Vaša lozinka..."
-                onChange={(e) => setPassword(e.target.value)}
+                ref={register({
+                  required: "Lozinka je obavezna.",
+                  minLength: {
+                    value: 6,
+                    message: "Lozinka mora imati najmanje 6 znakova.",
+                  },
+                })}
               />
+              {errors.signupPassword && <span>{errors.signupPassword.message}</span>}
             </div>
-            <button type="submit" className="submitButton">
-              Registriraj se
-            </button>
+            <input
+              type="submit"
+              className="btn btn-secondary center"
+              value="Registriraj se"
+            />
           </form>
         )}
       </div>

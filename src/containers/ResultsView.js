@@ -7,7 +7,7 @@ import MenuComponent from '../components/MenuComponent'
 function ResultsView() {
   return (
     <div className="main-container">
-      <div className="mainFuncs">
+      <div className="main-funcs">
         <MenuComponent />
         <SearchComponent />
       </div>

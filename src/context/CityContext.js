@@ -7,11 +7,7 @@ export function reducer(state, action) {
     case "setSelectedCity":
       return {
         ...state,
-        selectedCity: setSelectedCity(
-          action.payload.name,
-          action.payload.id,
-          state
-        ),
+        selectedCity: action.payload.index > -1 ? action.payload.index : -1,
       };
     case "saveCity":
       return { ...state, cities: saveCity(action.payload.cityName, state) };
@@ -33,14 +29,10 @@ export function reducer(state, action) {
     case "authorisationLogout":
       return { ...state, userData: null, cities: [], selectedCity: {} };
     case "removeCity":
-      removeCity(action.payload.cityToRemove);
+      removeCity(action.payload.cityToRemove, state);
       return {
         ...state,
-        selectedCity: setSelectedCity(
-          action.payload.name,
-          action.payload.id,
-          state
-        ),
+        selectedCity: state.cities.length > 1 ? 0 : -1,
       };
 
     default:
@@ -52,31 +44,25 @@ function setCities(cities, state) {
   const citiesData = [];
   if (state.userData) {
     cities.forEach((city) => {
-      if (city.data().uid === state.userData.uid) {
-        citiesData.push({ ...city.data(), id: city.id });
-      }
+      citiesData.push({ ...city.data(), id: city.id });
     });
   }
-
   return citiesData;
-}
-
-function setSelectedCity(name, id, state) {
-  if (name && id) {
-    return { name: name, id: id };
-  } else if (state.cities.length) {
-    return { name: state.cities[0].name, id: state.cities[0].id };
-  } else {
-    return { name: "", id: "" };
-  }
 }
 
 function saveCity(cityName, state) {
   const db = firebase.firestore();
-  db.collection("cities").add({ name: cityName, uid: state.userData.uid });
+  db.collection("cities")
+    .doc(state.userData.uid)
+    .collection("userCities")
+    .add({ name: cityName, uid: state.userData.uid });
 }
 
-function removeCity(id) {
+function removeCity(id, state) {
   const db = firebase.firestore();
-  db.collection("cities").doc(id).delete();
+  db.collection("cities")
+    .doc(state.userData.uid)
+    .collection("userCities")
+    .doc(id)
+    .delete();
 }

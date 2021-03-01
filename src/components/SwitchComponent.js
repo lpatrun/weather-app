@@ -5,21 +5,21 @@ import { UserContext } from "../App";
 function SwitchComponent() {
   const { state, dispatch } = useContext(UserContext);
 
-  const setSelCity = (name, id) => {
-    dispatch({ type: "setSelectedCity", payload: { name, id } });
+  const setSelCity = (index) => {
+    dispatch({ type: "setSelectedCity", payload: { index } });
   };
 
   return (
-    <div className="citySwitch">
+    <div className="city-switch">
       {state.cities ? (
-        state.cities.map((city) => (
+        state.cities.map((city, index) => (
           <div
             key={city.id}
-            onClick={() => setSelCity(city.name, city.id)}
+            onClick={() => setSelCity(index)}
             className={
-              city.name === state.selectedCity.name
-                ? "citySwitchTownActive"
-                : "citySwitchTown"
+              index === state.selectedCity
+                ? "city-switch-town-active"
+                : "city-switch-town"
             }
           >
             {city.name}

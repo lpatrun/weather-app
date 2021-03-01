@@ -1,4 +1,4 @@
-.mainFuncs {
+.main-funcs {
   display: grid;
   grid-template-columns: 2fr 3fr;
   column-gap: 25px;
@@ -19,7 +19,7 @@
 }
 
 @media (max-width: 420px) {
-  .mainFuncs {
+  .main-funcs {
     display: flex;
     row-gap: 25px;
   }

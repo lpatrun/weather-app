@@ -1,17 +1,17 @@
-.searchContainer {
+.search-container {
   position: relative;
 }
 
 .underly {
-  position: absolute;
+  position: fixed;
   z-index: 5;
   height: 100vh;
   width: 100vw;
-  left: -40%;
-  top: -30%;
+  left: 0;
+  top: 0%;
 }
 
-.searchBox {
+.search-box {
   width: 80%;
   margin: 0 auto;
   border-bottom: 1px solid rgba(255, 255, 255, 0.6);
@@ -23,7 +23,7 @@
   position: relative;
 }
 
-.searchBar {
+.search-bar {
   width: 80%;
   padding: 10px 15px;
   -webkit-appearance: none;
@@ -36,12 +36,12 @@
   color: white;
 }
 
-.searchBar::placeholder {
+.search-bar::placeholder {
   color: white;
   opacity: 0.8;
 }
 
-.mainBtn {
+.main-btn {
   margin-right: 10px;
   padding: 6px 15px;
   font-size: 20px;
@@ -52,7 +52,7 @@
   color: white;
 }
 
-.mainBtn:hover {
+.main-btn:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -71,7 +71,7 @@
   z-index: 10;
 }
 
-.autosuggestionItem {
+.autosuggestion-item {
   padding: 5px 20px;
   font-weight: bold;
   text-transform: uppercase;
@@ -80,11 +80,11 @@
 
 @media (max-width: 420px) {
   .underly {
-    left: -34%;
-    top: -27%;
+    left: 0;
+    top: 0;
   }
 
-  .searchBox {
+  .search-box {
     width: 100%;
   }
 

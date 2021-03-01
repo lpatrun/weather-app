@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 
 import StartView from "./containers/StartView";
 import ResultsView from "./containers/ResultsView";
@@ -19,8 +19,9 @@ export const UserContext = createContext();
 function App() {
   const [state, dispatch] = useReducer(reducer, {
     cities: [],
-    selectedCity: {},
+    selectedCity: -1,
     userData: null,
+    loadingUser: false
   });
 
   useEffect(() => {
@@ -33,13 +34,20 @@ function App() {
     });
 
     if (state.userData) {
-      return db.collection("cities").onSnapshot((snapshot) => {
-        dispatch({ type: "saveSnapshot", payload: { cities: snapshot } });
-        dispatch({
-          type: "setSelectedCity",
-          payload: { name: null, id: null },
+      return db
+        .collection("cities")
+        .doc(state.userData.uid)
+        .collection("userCities")
+        .onSnapshot((snapshot) => {
+          dispatch({ type: "saveSnapshot", payload: { cities: snapshot } });
+          let counter = 0;
+          snapshot.forEach((city) => {
+            counter++;
+          });
+          counter
+            ? dispatch({ type: "setSelectedCity", payload: { index: 0 } })
+            : dispatch({ type: "setSelectedCity", payload: { index: -1 } });
         });
-      });
     }
   }, [state.userData]);
 

@@ -11,12 +11,12 @@ function ProfileView() {
   const toLogout = () => {
     auth.signOut();
     dispatch({ type: "authorisationLogout" });
-    history.push("/");
+    history.push("/search");
   };
 
   return (
     <div className="main-container">
-      <div className="mainFuncs">
+      <div className="main-funcs">
         <MenuComponent />
       </div>
       <button onClick={() => toLogout()} style={{width:"100px", height:"100px", marginTop:"150px"}}>Odjava</button>

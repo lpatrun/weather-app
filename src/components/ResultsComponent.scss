@@ -1,12 +1,11 @@
-.weatherResults {
+.weather-results {
   width: 35%;
   margin: 0px auto;
   margin-top: 100px;
   position: relative;
-  /* background-color: rgba(255, 255, 255, 0.6); */
 }
 
-.locationBox {
+.location-box {
   margin: 10px auto 20px auto;
   font-size: 30px;
   text-align: center;
@@ -15,37 +14,37 @@
   font-weight: 700;
 }
 
-.weatherBox {
+.weather-box {
   display: grid;
   grid-template-columns: 2fr 5fr;
   column-gap: 10px;
   margin-bottom: 25px;
 }
 
-.weatherBox img {
+.weather-box img {
   display: flex;
   justify-self: center;
   align-self: center;
 }
 
-.weatherBoxInfo {
+.weather-box-info {
   text-align: end;
 }
 
-.weatherBoxInfo .weather {
+.weather-box-info .weather {
   color: #fff;
   font-size: 40px;
   font-weight: 700;
   text-transform: capitalize;
 }
 
-.weatherBoxInfo .temp {
+.weather-box-info .temp {
   color: #fff;
   font-size: 100px;
   font-weight: 900;
 }
 
-.weatherBoxInfo .realFeel {
+.weather-box-info .real-feel {
   color: #fff;
   font-size: 20px;
   font-weight: 500;
@@ -53,11 +52,11 @@
   margin-bottom: 10px;
 }
 
-.returnBtn {
+.return-btn {
   background-color: rgba(255, 255, 255, 0.5);
   color: white;
-  width: 40%;
-  margin: 0 30%;
+  width: 120px;
+  margin: 0 auto;
   padding: 10px;
   outline: none;
   border: none;
@@ -65,21 +64,22 @@
   font-size: 20px;
   cursor: pointer;
   text-align: center;
+  display: block;
 }
 
-.returnBtn:hover {
+.return-btn:hover {
   background-color: #fefefe;
   color: #222;
 }
 
 @media (max-width: 420px) {
-  .weatherResults {
+  .weather-results {
     margin-top: 80px;
     width: 100%;
     padding: 0px 20px;
   }
 
-  .locationBox {
+  .location-box {
     margin: 20px auto;
     font-size: 28px;
     text-align: center;
@@ -88,23 +88,23 @@
     font-weight: 700;
   }
 
-  .weatherBox {
+  .weather-box {
     grid-template-columns: none;
   }
 
-  .weatherBoxInfo .temp {
+  .weather-box-info .temp {
     font-size: 40px;
     font-weight: 700;
   }
 
-  .weatherBoxInfo .realFeel {
+  .weather-box-info .real-feel {
     font-size: 18px;
     font-weight: 500;
     margin-top: 0px;
     margin-bottom: 0px;
   }
 
-  .weatherBoxInfo .weather {
+  .weather-box-info .weather {
     font-size: 26px;
     font-weight: 500;
   }

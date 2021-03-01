@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./SearchComponent.css";
+import "./SearchComponent.scss";
 import { useHistory } from "react-router-dom";
 import cities from "../data/gradovi.json";
 
@@ -38,7 +38,7 @@ function SearchComponent() {
   };
 
   return (
-    <div className="searchContainer">
+    <div className="search-container">
       {underlay && (
         <div
           className="underly"
@@ -47,17 +47,17 @@ function SearchComponent() {
           }}
         ></div>
       )}
-      <form onSubmit={toHandleSubmit} className="searchBox">
+      <form onSubmit={toHandleSubmit} className="search-box">
         <input
           type="text"
-          className="searchBar"
+          className="search-bar"
           placeholder="Tražilica..."
           onChange={handleChange}
           value={query}
           required
         />
 
-        <button type="submit" className="mainBtn">
+        <button type="submit" className="btn btn-primary btn-small">
           Traži
         </button>
 
@@ -65,7 +65,7 @@ function SearchComponent() {
           <div className="autosuggestion">
             {gradoviZaSelect.map((grad) => (
               <div
-                className="autosuggestionItem"
+                className="autosuggestion-item"
                 key={grad.id}
                 onClick={() => toSelectTown(grad.name)}
               >
