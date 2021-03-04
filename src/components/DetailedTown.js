@@ -44,13 +44,12 @@ function DetailedTown() {
       const date = new Date(hour.dt * 1000);
       return (
         <div className="details-box" key={hour.dt}>
-          <img
-            src={`http://openweathermap.org/img/wn/${hour.weather[0].icon}@2x.png`}
-            alt={state.cities[state.selectedCity]}
-            title={hour.weather[0].description}
-            height="100px"
-            width="100px"
-          />
+           <img
+              alt={state.cities[state.selectedCity].name}
+              height="100px"
+              width="100px"
+              src={require(`../images/${hour.weather[0].icon}.svg`)}
+            />
           <div className="details-box-info">
             <div className="details-weather">{hour.weather[0].description}</div>
             <div className="details-temp">{Math.round(hour.main.temp)} °C</div>

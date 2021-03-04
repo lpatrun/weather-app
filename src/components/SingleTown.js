@@ -20,11 +20,8 @@ function SingleTown() {
   useEffect(() => {
     mounted.current = true;
     if (state.selectedCity > -1) {
-      fetch(
-        `${api.base}weather?q=${state.cities[state.selectedCity].name}${
-          api.sinSet
-        }&appid=${api.key}`
-      )
+      const city = state.cities[state.selectedCity].name;
+      fetch(`${api.base}weather?q=${city}${api.sinSet}&appid=${api.key}`)
         .then((response) => response.json())
         .then((result) => {
           result = {
@@ -47,6 +44,8 @@ function SingleTown() {
     const db = firebase.firestore();
     if (state.cities.length === 1) {
       dispatch({ type: "setSelectedCity", payload: { index: -1 } });
+    } else {
+      dispatch({ type: "setSelectedCity", payload: { index: 0 } });
     }
     db.collection("cities")
       .doc(state.userData.uid)
@@ -61,17 +60,25 @@ function SingleTown() {
         <>
           <div className="weather-box">
             <img
-              src={`https://openweathermap.org/img/wn/${city.weather[0].icon}@4x.png`}
               alt={city.name}
               height="200px"
               width="200px"
+              src={require(`../images/${city.weather[0].icon}.svg`)}
             />
             <div className="weather-box-info">
               <div className="weather">{city.weather[0].description}</div>
               <div className="temp">{Math.round(city.main.temp)} °C</div>
               <div className="real-feel">
                 <p>Dojam: {Math.round(city.main.feels_like)} °C</p>
-                <p>Vjetar: {Math.round(city.wind.speed * 3.6)} km/h <span className="compass-arrow" style={{ transform: `rotate(${city.wind.deg}deg)`}}>➤</span></p>
+                <p>
+                  Vjetar: {Math.round(city.wind.speed * 3.6)} km/h{" "}
+                  <span
+                    className="compass-arrow"
+                    style={{ transform: `rotate(${city.wind.deg}deg)` }}
+                  >
+                    ➤
+                  </span>
+                </p>
               </div>
             </div>
           </div>
