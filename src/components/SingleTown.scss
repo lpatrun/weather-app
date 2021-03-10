@@ -1,0 +1,27 @@
+.single-town {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+
+  @media screen and( max-width :420px) {
+    width: 100%;
+    flex-direction: column;
+    padding-top: 30px;
+  }
+
+  img {
+    height: 200px;
+    width: 200px;
+
+    @media screen and( max-width :420px) {
+
+    }
+  }
+}
+
+@media screen and( max-width :420px) {
+  .single-town img {
+    display: block;
+    margin: 0 auto;
+  }
+}

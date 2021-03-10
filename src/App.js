@@ -21,7 +21,7 @@ function App() {
     cities: [],
     selectedCity: -1,
     userData: null,
-    loadingUser: false
+    loadingCities: false,
   });
 
   useEffect(() => {
@@ -29,6 +29,7 @@ function App() {
 
     auth.onAuthStateChanged((user) => {
       if (user) {
+        dispatch({ type: "loadingCities" });
         dispatch({ type: "logUserIn", payload: { userData: user } });
       }
     });
@@ -44,9 +45,9 @@ function App() {
           snapshot.forEach((city) => {
             counter++;
           });
-          counter
-            ? dispatch({ type: "setSelectedCity", payload: { index: 0 } })
-            : dispatch({ type: "setSelectedCity", payload: { index: -1 } });
+          counter &&
+            dispatch({ type: "setSelectedCity", payload: { index: 0 } });
+          dispatch({ type: "notLoadingCities" });
         });
     }
   }, [state.userData]);

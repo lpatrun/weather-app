@@ -1,112 +1,32 @@
 .weather-results {
   width: 35%;
   margin: 0px auto;
-  margin-top: 100px;
   position: relative;
-}
-
-.location-box {
-  margin: 10px auto 20px auto;
-  font-size: 30px;
-  text-align: center;
-  color: white;
-  text-transform: uppercase;
-  font-weight: 700;
+  padding-top: 95px;
 }
 
 .weather-box {
-  display: grid;
-  grid-template-columns: 2fr 5fr;
-  column-gap: 10px;
   margin-bottom: 25px;
   padding-top: 15px;
 }
 
 .weather-box img {
-  display: flex;
-  justify-self: center;
-  align-self: center;
-}
-
-.weather-box-info {
-  text-align: end;
-}
-
-.weather-box-info .weather {
-  color: #fff;
-  font-size: 40px;
-  font-weight: 700;
-  text-transform: capitalize;
-}
-
-.weather-box-info .temp {
-  color: #fff;
-  font-size: 100px;
-  font-weight: 900;
-}
-
-.weather-box-info .real-feel {
-  color: #fff;
-  font-size: 20px;
-  font-weight: 500;
-  margin-top: -15px;
-  margin-bottom: 10px;
-}
-
-.return-btn {
-  background-color: rgba(255, 255, 255, 0.5);
-  color: white;
-  width: 120px;
-  margin: 0 auto;
-  padding: 10px;
-  outline: none;
-  border: none;
-  text-transform: uppercase;
-  font-size: 20px;
-  cursor: pointer;
-  text-align: center;
   display: block;
-}
-
-.return-btn:hover {
-  background-color: #fefefe;
-  color: #222;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
 }
 
 @media (max-width: 420px) {
   .weather-results {
-    margin-top: 80px;
     width: 100%;
     padding: 0px 20px;
+    padding-top: 65px;
   }
 
-  .location-box {
-    margin: 20px auto;
-    font-size: 28px;
-    text-align: center;
-    color: white;
-    text-transform: uppercase;
-    font-weight: 700;
-  }
-
-  .weather-box {
-    grid-template-columns: none;
-  }
-
-  .weather-box-info .temp {
-    font-size: 40px;
-    font-weight: 700;
-  }
-
-  .weather-box-info .real-feel {
-    font-size: 18px;
-    font-weight: 500;
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
-
-  .weather-box-info .weather {
-    font-size: 26px;
-    font-weight: 500;
+  .weather-box img{
+    width: 150px;
+    height: 150px;
+    margin-top: 25px;
   }
 }

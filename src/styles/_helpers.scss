@@ -2,3 +2,35 @@
   display: block;
   margin: 0 auto;
 }
+
+.d-flex {
+  display: flex;
+}
+
+.d-block {
+  display: block;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-around {
+  justify-content: space-around
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-align-end {
+  text-align: end;
+}
+
+.text-center {
+  text-align: center;
+}

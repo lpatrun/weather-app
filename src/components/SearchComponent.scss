@@ -1,5 +1,10 @@
 .search-container {
   position: relative;
+  width: 60%;
+
+  @media only screen and (max-width: 420px) {
+    width: 70%;
+  }
 }
 
 .underly {

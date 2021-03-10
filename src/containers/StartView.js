@@ -16,19 +16,11 @@ function StartView() {
         <SwitchComponent />
       </div>
       <>
-        { state.selectedCity > -1 ? (
-          <SingleTown key={state.cities[state.selectedCity]} />
-        ) : state.selectedCity > -1 ? (
-          <div className="loader">Loading...</div>
-        ) : (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              paddingTop: "100px"
-            }}
-          >
+        {state.selectedCity > -1 
+        ? (<SingleTown key={state.cities[state.selectedCity]} />)
+        : state.loadingCities  
+        ? (<div className="loader"></div>) 
+        : (<div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingTop: "100px"}}>
             <p style={{ color: "white", textAlign: "center" }}>
               Trenutno ne pratite niti jedan grad :/
             </p>

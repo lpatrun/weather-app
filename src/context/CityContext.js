@@ -28,6 +28,10 @@ export function reducer(state, action) {
       };
     case "authorisationLogout":
       return { ...state, userData: null, cities: [], selectedCity: {} };
+    case "loadingCities":
+      return { ...state, loadingCities: true };
+    case "notLoadingCities":
+      return { ...state, loadingCities: false };
     case "removeCity":
       removeCity(action.payload.cityToRemove, state);
       return {

@@ -19,7 +19,7 @@ function DetailedView() {
         {state.cities.length ? (
           <DetailedTown key={state.cities[state.selectedCity]} />
         ) : state.selectedCity > -1 ? (
-          <div className="loader">Loading...</div>
+          <div className="loader"></div>
         ) : (
           <div
             style={{

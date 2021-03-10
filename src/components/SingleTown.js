@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
+import "./SingleTown.scss";
 import "./ResultsComponent.scss";
 import { Link } from "react-router-dom";
 import { UserContext } from "../App";
@@ -57,29 +58,25 @@ function SingleTown() {
   return (
     <div className="weather-results">
       {Object.keys(city).length ? (
-        <>
-          <div className="weather-box">
+        <div>
+          <div className="single-town">
             <img
               alt={city.name}
-              height="200px"
-              width="200px"
               src={require(`../images/${city.weather[0].icon}.svg`)}
             />
-            <div className="weather-box-info">
-              <div className="weather">{city.weather[0].description}</div>
-              <div className="temp">{Math.round(city.main.temp)} °C</div>
-              <div className="real-feel">
-                <p>Dojam: {Math.round(city.main.feels_like)} °C</p>
-                <p>
-                  Vjetar: {Math.round(city.wind.speed * 3.6)} km/h{" "}
-                  <span
-                    className="compass-arrow"
-                    style={{ transform: `rotate(${city.wind.deg}deg)` }}
-                  >
-                    ➤
-                  </span>
-                </p>
-              </div>
+            <div className="text-align-end">
+              <h2 className="text-capitalize">{city.weather[0].description}</h2>
+              <h1>{Math.round(city.main.temp)} °C</h1>
+              <p>Dojam: {Math.round(city.main.feels_like)} °C</p>
+              <p>
+                Vjetar: {Math.round(city.wind.speed * 3.6)} km/h{" "}
+                <span
+                  className="compass-arrow"
+                  style={{ transform: `rotate(${city.wind.deg}deg)` }}
+                >
+                  ➤
+                </span>
+              </p>
             </div>
           </div>
           <div className="options">
@@ -92,9 +89,9 @@ function SingleTown() {
               5 dana
             </Link>
           </div>
-        </>
+        </div>
       ) : (
-        <div className="loader">Loading...</div>
+          <div className="loader"></div>
       )}
     </div>
   );

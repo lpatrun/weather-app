@@ -1,8 +1,6 @@
 .main-funcs {
-  display: grid;
-  grid-template-columns: 2fr 3fr;
-  column-gap: 25px;
-  align-items: center;
+  display: flex;
+  column-gap: 100px;
 
   position: fixed;
   left: 0;

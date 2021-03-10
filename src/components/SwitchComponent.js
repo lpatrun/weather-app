@@ -26,7 +26,7 @@ function SwitchComponent() {
           </div>
         ))
       ) : (
-        <div className="loader">Loading...</div>
+        <div className="loader"></div>
       )}
     </div>
   );
