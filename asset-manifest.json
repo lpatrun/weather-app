@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/weather-app/static/css/main.66c2bdda.chunk.css",
-    "main.js": "/weather-app/static/js/main.b0ded120.chunk.js",
-    "main.js.map": "/weather-app/static/js/main.b0ded120.chunk.js.map",
+    "main.css": "/weather-app/static/css/main.69c66127.chunk.css",
+    "main.js": "/weather-app/static/js/main.a537a16f.chunk.js",
+    "main.js.map": "/weather-app/static/js/main.a537a16f.chunk.js.map",
     "runtime-main.js": "/weather-app/static/js/runtime-main.e6f382d7.js",
     "runtime-main.js.map": "/weather-app/static/js/runtime-main.e6f382d7.js.map",
-    "static/js/2.64242ba3.chunk.js": "/weather-app/static/js/2.64242ba3.chunk.js",
-    "static/js/2.64242ba3.chunk.js.map": "/weather-app/static/js/2.64242ba3.chunk.js.map",
+    "static/js/2.30db2f29.chunk.js": "/weather-app/static/js/2.30db2f29.chunk.js",
+    "static/js/2.30db2f29.chunk.js.map": "/weather-app/static/js/2.30db2f29.chunk.js.map",
     "index.html": "/weather-app/index.html",
-    "precache-manifest.4ac7fa658b0dc79832e21ea5a591e4dc.js": "/weather-app/precache-manifest.4ac7fa658b0dc79832e21ea5a591e4dc.js",
+    "precache-manifest.093249777111364619247602545ac960.js": "/weather-app/precache-manifest.093249777111364619247602545ac960.js",
     "service-worker.js": "/weather-app/service-worker.js",
-    "static/css/main.66c2bdda.chunk.css.map": "/weather-app/static/css/main.66c2bdda.chunk.css.map",
-    "static/js/2.64242ba3.chunk.js.LICENSE.txt": "/weather-app/static/js/2.64242ba3.chunk.js.LICENSE.txt",
+    "static/css/main.69c66127.chunk.css.map": "/weather-app/static/css/main.69c66127.chunk.css.map",
+    "static/js/2.30db2f29.chunk.js.LICENSE.txt": "/weather-app/static/js/2.30db2f29.chunk.js.LICENSE.txt",
     "static/media/003-snowflake.svg": "/weather-app/static/media/003-snowflake.04c2dcb0.svg",
     "static/media/013-night.svg": "/weather-app/static/media/013-night.d3ee96b7.svg",
     "static/media/014-haze.svg": "/weather-app/static/media/014-haze.82d93268.svg",
@@ -45,8 +45,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.e6f382d7.js",
-    "static/js/2.64242ba3.chunk.js",
-    "static/css/main.66c2bdda.chunk.css",
-    "static/js/main.b0ded120.chunk.js"
+    "static/js/2.30db2f29.chunk.js",
+    "static/css/main.69c66127.chunk.css",
+    "static/js/main.a537a16f.chunk.js"
   ]
 }
