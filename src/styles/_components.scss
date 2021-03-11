@@ -1,7 +1,7 @@
 .btn {
   padding: 10px 20px;
   outline: $white;
-  font-size: 22px;
+  font-size: 20px;
   cursor: pointer;
   text-transform: uppercase;
   
@@ -34,3 +34,14 @@
   }
 }
 
+.go-follow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 95px;
+
+  p {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+}

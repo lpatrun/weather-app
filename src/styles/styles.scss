@@ -5,3 +5,14 @@
 @import "./components";
 @import "./typography";
 
+//=======CONTAINERS=======//
+@import "./containers/AuthView.scss";
+@import "./containers/StartView.scss";
+
+
+//=======CONTAINER COMPONENTS=======//
+@import "./container-components/DetailedTown.scss";
+@import "./container-components/MenuComponent.scss";
+@import "./container-components/ResultsComponent.scss";
+@import "./container-components/SearchComponent.scss";
+@import "./container-components/SingleTown.scss";

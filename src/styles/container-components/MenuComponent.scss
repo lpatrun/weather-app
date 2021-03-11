@@ -9,7 +9,7 @@
 }
 
 .mobile .active svg {
-  fill: #222;
+  fill: $darkgray;
 }
 
 .desktop {
@@ -18,9 +18,9 @@
 }
 
 .desktop .menu-item {
-  color: #222;
-  fill: #222;
-  background-color: rgba(255, 255, 255, 0.9);
+  color: $darkgray;
+  fill: $darkgray;
+  background-color: $palewhite;
   padding: 10px 15px;
 }
 
@@ -32,9 +32,9 @@
 
 .menu-item:hover {
   text-decoration: underline;
-  background-color: rgba(255, 255, 255, 0.1);
-  color:#fff;
-  fill: #fff;
+  background-color: $transparentgray;
+  color: $white;
+  fill: $white;
 }
 
 .menu-item img {
@@ -44,21 +44,71 @@
   margin-bottom: -3px;
 }
 
-.desktop .active{
-  color:#fff;
-  fill: #fff;
+.desktop .active {
+  color: $white;
+  fill: $white;
   text-decoration: underline;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: $transparentgray;
+}
+
+.city-switch {
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  overflow-x: auto;
+
+  &-town {
+    color: $white;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $white;
+    }
+
+    &:not(:last-child) {
+      border-right: 1px solid $white;
+    }
+
+    &-active {
+      background-color: $white;
+      color: $darkgray;
+      padding: 10px 15px;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+  }
 }
 
 @media (max-width: 420px) {
+  .city-switch {
+    width: 100%;
+    margin: 0px auto;
+    overflow-x: auto;
+    justify-content: start;
+  }
+
+  .active {
+    color: $black;
+    text-decoration: underline;
+    background-color: $white;
+  }
+
   .desktop {
     display: none;
   }
 
   .menu-item {
     font-size: 20px;
-    color: #222;
+    color: $darkgray;
+  }
+
+  .menu-item:hover {
+    color: $black;
+    text-decoration: underline;
+    background-color: $white;
   }
 
   .menu-icon {
@@ -75,7 +125,7 @@
 
   .menu-icon span {
     display: block;
-    background: rgba(255, 255, 255, 0.9);
+    background: $palewhite;
     width: 100%;
     height: 3px;
     padding: 0px 15px;
@@ -87,9 +137,9 @@
 
   .menu-icon:before,
   .menu-icon:after {
-    content: '';
+    content: "";
     display: block;
-    background: rgba(255, 255, 255, 0.9);
+    background: $palewhite;
     width: 100%;
     height: 3px;
     position: absolute;
@@ -116,13 +166,13 @@
   .menu-shown .menu-icon:before {
     top: 50%;
     transform: rotate(45deg);
-    background-color: black;
+    background-color: $black;
   }
 
   .menu-shown .menu-icon:after {
     bottom: 50%;
     transform: rotate(-45deg);
-    background-color: black;
+    background-color: $black;
   }
 
   .menu-shown .mobile.menu {
@@ -138,7 +188,7 @@
     min-height: 100vh;
     text-align: center;
     padding-top: 112px;
-    background: rgb(220, 220, 220);
+    background: $white;
     z-index: 10;
     transition: all 0.4s ease-in-out;
     transform: translateX(-100%);
@@ -149,7 +199,7 @@
     line-height: 2;
     padding: 25px 0;
     text-transform: uppercase;
-    color: black;
+    color: $black;
     font-size: 28px;
     display: flex;
     align-items: center;

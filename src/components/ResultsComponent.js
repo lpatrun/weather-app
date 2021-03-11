@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./ResultsComponent.scss";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { UserContext } from "../App";
 import firebase from "../firebase";
@@ -89,7 +88,9 @@ function ResultsComponent() {
           </div>
         </>
       ) : (
-        <div className="loader"></div>
+        <div className="weather-results">
+          <div className="loader"></div>
+        </div>
       )}
     </>
   );

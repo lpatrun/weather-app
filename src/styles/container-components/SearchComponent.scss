@@ -19,12 +19,11 @@
 .search-box {
   width: 80%;
   margin: 0 auto;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid $palewhite;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
   position: relative;
 }
 
@@ -36,39 +35,23 @@
   background: none;
   border: none;
   outline: none;
-  color: #313131;
   font-size: 20px;
-  color: white;
+  color: $white;
 }
 
 .search-bar::placeholder {
-  color: white;
+  color: $white;
   opacity: 0.8;
-}
-
-.main-btn {
-  margin-right: 10px;
-  padding: 6px 15px;
-  font-size: 20px;
-  border: none;
-  outline: none;
-  background-color: rgba(255, 255, 255, 0.4);
-  cursor: pointer;
-  color: white;
-}
-
-.main-btn:hover {
-  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .autosuggestion {
   width: 100%;
   margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: $white;
   max-height: 100px;
   overflow-y: scroll;
   overflow-x: hidden;
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 10px 10px $transparentblack;
 
   position: absolute;
   top: 100%;

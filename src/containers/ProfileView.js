@@ -19,7 +19,11 @@ function ProfileView() {
       <div className="main-funcs">
         <MenuComponent />
       </div>
-      <button onClick={() => toLogout()} style={{width:"100px", height:"100px", marginTop:"150px"}}>Odjava</button>
+      <div className="weather-results">
+        <button onClick={() => toLogout()} className="btn btn-primary">
+          Odjava
+        </button>
+      </div>
     </div>
   );
 }

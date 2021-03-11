@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./SearchComponent.scss";
 import { useHistory } from "react-router-dom";
 import cities from "../data/gradovi.json";
 

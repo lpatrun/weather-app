@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
-import "./SingleTown.scss";
-import "./ResultsComponent.scss";
 import { Link } from "react-router-dom";
 import { UserContext } from "../App";
 import firebase from "../firebase";

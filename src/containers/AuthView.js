@@ -1,12 +1,11 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import "./AuthView.scss";
 import { auth } from "../firebase";
-import MenuComponent from "../components/MenuComponent";
 import { Redirect } from "react-router-dom";
 import { UserContext } from "../App";
+import MenuComponent from "../components/MenuComponent";
 
-function AuthView() {
+export default function AuthView() {
   const { state, dispatch } = useContext(UserContext);
 
   const [proces, setProces] = useState("signin");
@@ -50,13 +49,13 @@ function AuthView() {
 
         <div className="form-menu">
           <button
-            className={proces === "signin" ? "form-menu-active" : ""}
+            className={`${proces === "signin" && "form-menu-active"} `} 
             onClick={() => setProces("signin")}
           >
             prijavi se
           </button>
           <button
-            className={proces === "signup" ? "form-menu-active" : ""}
+            className={proces === "signup" && "form-menu-active"}
             onClick={() => setProces("signup")}
           >
             registriraj se
@@ -130,5 +129,3 @@ function AuthView() {
     </div>
   );
 }
-
-export default AuthView;

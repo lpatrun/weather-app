@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import "./MenuComponent.scss";
 import { NavLink } from "react-router-dom";
 import { UserContext } from "../App";
 
