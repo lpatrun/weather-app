@@ -14,7 +14,7 @@ function StartView() {
         <MenuComponent />
         <SwitchComponent />
       </div>
-      <>
+      <div className="weather-results">
         {state.selectedCity > -1 ? (
           <SingleTown key={state.cities[state.selectedCity]} />
         ) : state.loadingCities ? (
@@ -22,7 +22,7 @@ function StartView() {
         ) : (
           <GoFollowComponent />
         )}
-      </>
+      </div>
     </div>
   );
 }

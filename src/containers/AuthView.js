@@ -7,23 +7,43 @@ import MenuComponent from "../components/MenuComponent";
 
 export default function AuthView() {
   const { state, dispatch } = useContext(UserContext);
-
   const [proces, setProces] = useState("signin");
   const { register, handleSubmit, errors } = useForm();
+  const [error, setError] = useState("");
+  const errorCodes = {
+    "auth/credential-already-in-use":
+      "Ovi podatci se već koriste na drugom korisničkom računu.",
+    "auth/email-already-in-use": "Navedena email adresa je već u uporabi.",
+    "auth/invalid-email": "Navedena email adresa nije ispravno napisana.",
+    "auth/wrong-password":
+      "Upisana lozinka nije ispravna ili korisnik ne postoji.",
+    "auth/too-many-requests":
+      "Zabilježena neuobičajena aktivnost. Molimo pokušajte kasnije.",
+  };
 
   const handleSignIn = (data) => {
+    setError("");
     auth
       .signInWithEmailAndPassword(data.signinEmail, data.signinPassword)
       .then((response) => {
         dispatch({ type: "userLogin", payload: { response } });
+      })
+      .catch((error) => {
+        document.getElementById("signin").reset();
+        setError(errorCodes[error.code]);
       });
   };
 
   const handleSignUp = (data) => {
+    setError("");
     auth
       .createUserWithEmailAndPassword(data.signupEmail, data.signupPassword)
       .then((response) => {
         dispatch({ type: "userSignup", payload: { response } });
+      })
+      .catch((error) => {
+        document.getElementById("signup").reset();
+        setError(errorCodes[error.code]);
       });
   };
 
@@ -49,21 +69,26 @@ export default function AuthView() {
 
         <div className="form-menu">
           <button
-            className={`${proces === "signin" && "form-menu-active"} `} 
+            className={`${
+              proces === "signin" ? "btn-secondary btn-active" : "btn-primary"
+            } btn btn-small`}
             onClick={() => setProces("signin")}
           >
             prijavi se
           </button>
           <button
-            className={proces === "signup" && "form-menu-active"}
+            className={`${
+              proces === "signup" ? "btn-secondary btn-active" : "btn-primary"
+            } btn btn-small`}
             onClick={() => setProces("signup")}
           >
             registriraj se
           </button>
         </div>
+        <div className="error-container">{error && <p>{error}</p>}</div>
 
         {proces === "signin" ? (
-          <form onSubmit={handleSubmit(handleSignIn)}>
+          <form id="signin" onSubmit={handleSubmit(handleSignIn)}>
             <div className="inputs-container">
               <input
                 type="email"
@@ -73,7 +98,6 @@ export default function AuthView() {
                   required: "Molimo unesite mail formata ivan.ivic@mail.com.",
                 })}
               />
-              {errors.signinEmail && <span>{errors.signinEmail.message}</span>}
               <input
                 type="password"
                 name="signinPassword"
@@ -86,12 +110,26 @@ export default function AuthView() {
                   },
                 })}
               />
-              {errors.signinPassword && <span>{errors.signinPassword.message}</span>}
             </div>
-            <input type="submit" className="btn btn-secondary center" value="Prijavi se" />
+            {errors.signinEmail && (
+              <div className="error-container">
+                {error && <p>{errors.signinEmail.message}</p>}
+              </div>
+            )}
+            {errors.signinPassword && (
+              <div className="error-container">
+                {error && <p>{errors.signinPassword.message}</p>}
+              </div>
+            )}
+
+            <input
+              type="submit"
+              className="btn btn-secondary center"
+              value="Prijavi se"
+            />
           </form>
         ) : (
-          <form onSubmit={handleSubmit(handleSignUp)}>
+          <form id="signup" onSubmit={handleSubmit(handleSignUp)}>
             <div className="inputs-container">
               <input
                 type="email"
@@ -101,8 +139,6 @@ export default function AuthView() {
                   required: "Molimo unesite mail formata ivan.ivic@mail.com.",
                 })}
               />
-              {errors.signupEmail && <span>{errors.signupEmail.message}</span>}
-
               <input
                 type="password"
                 name="signupPassword"
@@ -116,8 +152,18 @@ export default function AuthView() {
                   },
                 })}
               />
-              {errors.signupPassword && <span>{errors.signupPassword.message}</span>}
             </div>
+
+            {errors.signupEmail && (
+              <div className="error-container">
+                {error && <p>{errors.signupEmail.message}</p>}
+              </div>
+            )}
+            {errors.signupPassword && (
+              <div className="error-container">
+                {error && <p>{errors.signupPassword.message}</p>}
+              </div>
+            )}
             <input
               type="submit"
               className="btn btn-secondary center"

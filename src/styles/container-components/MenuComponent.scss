@@ -65,6 +65,7 @@
 
     &:hover {
       background-color: $white;
+      color: $darkgray;
     }
 
     &:not(:last-child) {
@@ -82,7 +83,7 @@
   }
 }
 
-@media (max-width: 420px) {
+@media only screen and (max-width: 420px) {
   .city-switch {
     width: 100%;
     margin: 0px auto;
@@ -103,12 +104,12 @@
   .menu-item {
     font-size: 20px;
     color: $darkgray;
-  }
-
-  .menu-item:hover {
-    color: $black;
-    text-decoration: underline;
-    background-color: $white;
+    
+    :hover {
+      color: $black;
+      text-decoration: underline;
+      background-color: $white;
+    }
   }
 
   .menu-icon {
@@ -121,18 +122,18 @@
     display: inline-block;
     vertical-align: middle;
     z-index: 20;
-  }
-
-  .menu-icon span {
-    display: block;
-    background: $palewhite;
-    width: 100%;
-    height: 3px;
-    padding: 0px 15px;
-    margin-top: -2px;
-    position: absolute;
-    left: 0;
-    top: 50%;
+    
+    span {
+      display: block;
+      background: $palewhite;
+      width: 100%;
+      height: 3px;
+      padding: 0px 15px;
+      margin-top: -2px;
+      position: absolute;
+      left: 0;
+      top: 50%;
+    }
   }
 
   .menu-icon:before,

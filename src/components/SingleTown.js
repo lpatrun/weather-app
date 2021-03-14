@@ -54,7 +54,7 @@ function SingleTown() {
   };
 
   return (
-    <div className="weather-results">
+    <>
       {Object.keys(city).length ? (
         <div>
           <div className="single-town">
@@ -91,7 +91,7 @@ function SingleTown() {
       ) : (
           <div className="loader"></div>
       )}
-    </div>
+    </>
   );
 }
 

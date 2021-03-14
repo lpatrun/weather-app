@@ -1,9 +1,39 @@
-.search-container {
-  position: relative;
-  width: 60%;
+.search {
+  &-container {
+    position: relative;
+    width: 60%;
+  }
 
-  @media only screen and (max-width: 420px) {
-    width: 70%;
+  &-box {
+    width: 80%;
+    margin: 0 auto;
+    border-bottom: 1px solid $palewhite;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    input::placeholder {
+      color: $palewhite;
+    }
+  }
+
+  &-bar {
+    width: 80%;
+    padding: 10px 15px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    color: $white;
+
+    ::placeholder {
+      color: $white;
+      opacity: 0.8;
+    }
   }
 }
 
@@ -14,34 +44,6 @@
   width: 100vw;
   left: 0;
   top: 0%;
-}
-
-.search-box {
-  width: 80%;
-  margin: 0 auto;
-  border-bottom: 1px solid $palewhite;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-}
-
-.search-bar {
-  width: 80%;
-  padding: 10px 15px;
-  -webkit-appearance: none;
-  appearance: none;
-  background: none;
-  border: none;
-  outline: none;
-  font-size: 20px;
-  color: $white;
-}
-
-.search-bar::placeholder {
-  color: $white;
-  opacity: 0.8;
 }
 
 .autosuggestion {
@@ -57,23 +59,27 @@
   top: 100%;
   left: 0;
   z-index: 10;
+
+  &-item {
+    padding: 5px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
 }
 
-.autosuggestion-item {
-  padding: 5px 20px;
-  font-weight: bold;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-@media (max-width: 420px) {
-  .underly {
-    left: 0;
-    top: 0;
+@media only screen and (max-width: 420px) {
+  .search-container {
+    width: 70%;
   }
 
   .search-box {
     width: 100%;
+  }
+
+  .underly {
+    left: 0;
+    top: 0;
   }
 
   .autosuggestion {
