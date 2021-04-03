@@ -70,7 +70,7 @@ function SingleTown() {
                 Vjetar: {Math.round(city.wind.speed * 3.6)} km/h{" "}
                 <span
                   className="compass-arrow"
-                  style={{ transform: `rotate(${city.wind.deg}deg)` }}
+                  style={{ transform: `rotate(${city.wind.deg + 90}deg)` }}
                 >
                   ➤
                 </span>

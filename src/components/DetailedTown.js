@@ -67,7 +67,7 @@ function DetailedTown() {
               Vjetar: {Math.round(hour.wind.speed * 3.6)} km/h{" "}
               <span
                 className="compass-arrow"
-                style={{ transform: `rotate(${hour.wind.deg}deg)` }}
+                style={{ transform: `rotate(${hour.wind.deg + 90}deg)` }}
               >
                 ➤
               </span>
